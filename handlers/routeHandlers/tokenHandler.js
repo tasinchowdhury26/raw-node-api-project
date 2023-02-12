@@ -1,11 +1,3 @@
-/* eslint-disable prefer-const */
-/*
- * Title: Token Handler
- * Description: Handler to handle token related routes
- * Author: Sumit Saha ( Learn with Sumit )
- * Date: 05/02/2023
- *
- */
 // dependencies
 const data = require('../../lib/data');
 const { hash } = require('../../helpers/utilities');

@@ -1,11 +1,3 @@
-/* eslint-disable prefer-const */
-/*
- * Title: User Handler
- * Description: Handler to handle user related routes
- * Author: Sumit Saha ( Learn with Sumit )
- * Date: 11/21/2020
- *
- */
 // dependencies
 const data = require('../../lib/data');
 const { hash } = require('../../helpers/utilities');
@@ -84,7 +76,7 @@ handler._users.get = (requestProperties, callback) => {
         : false;
     if (phone) {
         // verify the token
-        let token =            typeof requestProperties.headersObject.token === 'string'
+        const token =            typeof requestProperties.headersObject.token === 'string'
                 ? requestProperties.headersObject.token
                 : false;
         tokenHandler._verify(token, phone, (tokenId) => {
@@ -131,7 +123,7 @@ handler._users.put = (requestProperties, callback) => {
     if (phone) {
         if (firstName || lastName || password) {
             // verify the token
-            let token =                typeof requestProperties.headersObject.token === 'string'
+            const token =                typeof requestProperties.headersObject.token === 'string'
                     ? requestProperties.headersObject.token
                     : false;
             tokenHandler._verify(token, phone, (tokenId) => {
@@ -197,7 +189,7 @@ handler._users.delete = (requestProperties, callback) => {
 
     if (phone) {
         // verify the token
-        let token =            typeof requestProperties.headersObject.token === 'string'
+        const token =            typeof requestProperties.headersObject.token === 'string'
                 ? requestProperties.headersObject.token
                 : false;
         tokenHandler._verify(token, phone, (tokenId) => {
