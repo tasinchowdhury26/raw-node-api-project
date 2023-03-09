@@ -1,30 +1,19 @@
+/* eslint-disable prettier/prettier */
 // dependencies
-const http = require('http');
-const { handleReqRes } = require('./helpers/handleReqRes');
-const environment = require('./helpers/environments');
-const { sendTwilioSms } = require('./helpers/notifications');
+const server = require("./lib/server");
+const workers = require("./lib/worker");
 
-const data = require('./lib/data');
-
-// testing file system
-data.delete('test', 'newFile', (err) => {
-    console.log(err);
-});
-// module scaffolding
+// app object - module scaffolding
 const app = {};
 
-// @toDo remove it after testing
-sendTwilioSms('01624092756', 'Hello There!', (err) => {
-    console.log('This is error', err);
-});
-
-app.createServer = () => {
-    const server = http.createServer(app.handleReqRes);
-    server.listen(environment.port, () => {
-        console.log(`Server running on port ${environment.port}`);
-    });
+app.init = () => {
+  // start the server
+  server.init();
+  // start the workers
+  workers.init();
 };
 
-app.handleReqRes = handleReqRes;
+app.init();
 
-app.createServer();
+// export the app
+module.exports = app;
